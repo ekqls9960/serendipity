@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="masthead-subheading">Welcome :)</div>
                 <div class="masthead-heading text-uppercase">Jump into Serendipity!</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Free join</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="${pageContext.request.contextPath}/member/join">Free join</a>
             </div>
         </header>
         <!-- 마이페이지로 수정-->
@@ -54,7 +54,7 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Poetry</h2>
-                    <h3 class="section-subheading text-muted">세렌디피티 회원님들의 주제별 시를 감상하세요.</h3>
+                    <h3 class="section-subheading text-muted">세렌디피티 회원의 주제별 시를 감상하세요.</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mb-4">
