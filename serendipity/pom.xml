@@ -85,7 +85,18 @@
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
 		<scope>runtime</scope>
+	</dependency>
 	
+	<!-- 메일 -->
+	<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+	<!-- 랜덤생성 -->
+	<dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+   	 	<version>3.12.0</version>
 	</dependency>
 	</dependencies>
 

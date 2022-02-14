@@ -72,7 +72,7 @@
                     <label for="inputPassword" class="col-lg-2 control-label">비밀번호</label>
                     <div class="col-md-10">
                         
-                    	<form:password path="pwd" class="form-control" id="password"  data-rule-required="true" placeholder="비밀번호" maxlength="30" required="required"/>
+                    	<form:password path="pwd" class="form-control" id="pwd"  data-rule-required="true" placeholder="비밀번호" maxlength="30" required="required"/>
                     	<form:errors path="pwd" class="errorMsg"/>
                      <br>
                      </div>
@@ -80,7 +80,7 @@
                 <div class="form-group" id="divPasswordCheck">
                     <label for="inputPasswordCheck" class="col-lg-2 control-label">비밀번호 확인</label>
                     <div class="col-md-10">
-                    	<form:password path="confirmPwd" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="비밀번호 확인" maxlength="30" required="required"/>
+                    	<form:password path="confirmPwd" class="form-control" id="confirmPwd" data-rule-required="true" placeholder="비밀번호 확인" maxlength="30" required="required"/>
                     	<form:errors path="confirmPwd" class="errorMsg"/>
                      <br>
                      </div>
@@ -99,7 +99,7 @@
                     <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
                     <div class="col-md-10">
                     
-                    	<form:input path="phoneNum" class="form-control onlyNumber" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11" required="required"/>
+                    	<form:input path="phoneNum" class="form-control onlyNumber" id="phoneNum" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11" required="required"/>
                     	<form:errors path="phoneNum" class="errorMsg"/>
                    <br>
                      </div>
