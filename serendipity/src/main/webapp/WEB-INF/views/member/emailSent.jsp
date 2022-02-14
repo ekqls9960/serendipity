@@ -50,6 +50,11 @@
   	<div class="wrapper">
 		<div class="container">
 			<!-- <h3>${email } 로 인증 메일이 발송되었습니다</h3> -->
+		<br>
+		<br>
+			<h2 class="section-heading text-uppercase">이메일 인증</h2>
+			<br>
+			
 			 <c:set var ="email" value="${email}"/>
  				<c:if test ="${fn:contains(email,'naver')}">
  					<h2>
@@ -62,8 +67,17 @@
     				<h2><a href="<c:url value='https://mail.daum.net'/>">>${email}</a></h2>
  				</c:if>
  				<h2>인증 메일을 전송했습니다. 메일함을 확인해주세요!</h2>
+ 				<br><br>
+ 				<input type="button" class="btn btn-primary btn-lg" value="메인으로" onclick="window.location.href='${pageContext.request.contextPath}/'">&nbsp;&nbsp;
+ 				<input type="button" class="btn btn-primary btn-lg" value="로그인" onclick="window.location.href='${pageContext.request.contextPath}/login'"><br><br>
+ 				
+ 				
 		</div>
 	</div>
+	
+	<br>
+	<br>
+	
  
  
 
