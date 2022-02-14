@@ -28,6 +28,17 @@ public interface MemberMapper {
 	@Select("select * from member where nickname=#{nickname}")
 	Member selectByNickname(String nickname);
 	
+	
 	@Update("update member set IsEmailAuth=#{member.isEmailAuth} where email=#{email}")
 	void updateIsEmailAuth(@Param("email")String email, @Param("member")Member member );
+	
+	@Update("update member set pwd=#{tmpPwd} where email=#{email}")
+	void updatePwd(@Param("email")String email, @Param("tmpPwd")String tmpPwd );
+
+
+
+
+
+
+
 }

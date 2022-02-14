@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>로그인 -SERENDIPITY</title>
+        <title>이메일 찾기 -SERENDIPITY</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -47,43 +47,42 @@
 
     <body id="page-top">
     
-  <section class="page-section bg-light" id="loginForm">
+  <section class="page-section bg-light" id="findEmailForm">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">로그인</h2>
-                    <h3 class="section-subheading text-muted">세렌디피티 로그인 페이지입니다.</h3>
+                    <h2 class="section-heading text-uppercase">이메일 찾기</h2>
+                    <h3 class="section-subheading text-muted">세렌디피티 이메일 찾기 페이지입니다.</h3>
                 </div>
               <div class="center">
-              	   <form:form class="form-horizontal" modelAttribute="loginForm" role="form" method="post" action="${pageContext.request.contextPath}/login">
+              	   <form:form class="form-horizontal" modelAttribute="findEmailForm" role="form" method="post" action="${pageContext.request.contextPath}/login/findEmail">
 
 
                 
-                <div class="form-group" id="divEmail">
+                <div class="form-group" id="divNickname">
 
                     <div class="col-md-10">
-                    	<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-                        <form:input path="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" required="required"/>
-                        <form:errors path="email" class="errorMsg"/>
+                    	<label for="inputNickname" class="col-lg-2 control-label">닉네임 </label>
+                        <form:input path="nickname" class="form-control" id="nickname" data-rule-required="true" placeholder="가입한 닉네임" required="required"/>
                         <br>
                     </div>
                 </div>
 
 
-                <div class="form-group" id="divPassword">
-                    <label for="inputPassword" class="col-lg-2 control-label">비밀번호</label>
+                <div class="form-group" id="divPhonenum">
+                    <label for="inputPhonenum" class="col-lg-2 control-label">휴대폰 번호</label>
                     <div class="col-md-10">
                         
-                    	<form:password path="pwd" class="form-control" id="pwd"  data-rule-required="true" placeholder="비밀번호" maxlength="30" required="required"/>
-                    	<form:errors path="pwd" class="errorMsg"/>
+                    	<form:password path="phoneNum" class="form-control" id="phoneNum"  data-rule-required="true" placeholder="가입한 휴대폰 번호" maxlength="30" required="required"/>
                      <br>
                      </div>
                 </div>
+                
+                	<form:errors class="errorMsg"/>
               
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <input type="submit" class="btn btn-primary btn-lg" value="로그인"> &nbsp;&nbsp;
-                        <input type="button" class="btn btn-secondary btn-md" value="이메일찾기" onclick="window.location.href='${pageContext.request.contextPath}/login/findEmail'">&nbsp;&nbsp;
-                        <input type="button" class="btn btn-secondary btn-md" value="비밀번호찾기" onclick="window.location.href='${pageContext.request.contextPath}/login/findPwd'">
+                        <input type="submit" class="btn btn-primary btn-lg" value="이메일 찾기"> &nbsp;&nbsp;
+                        <input type="button" class="btn btn-secondary btn-md" value="뒤로" onclick="window.location.href='${pageContext.request.contextPath}/login'">&nbsp;&nbsp;
                     </div>
                     <br>
      

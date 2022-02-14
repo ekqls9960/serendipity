@@ -2,6 +2,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+         
          
 <html lang="en">
 
@@ -34,7 +36,14 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Poetry</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                        <c:if test="${member == null }">
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
+                        
+                        </c:if>
+                        <c:if test="${member != null }">
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">${member.nickname }님</a></li>
+                 
+                        </c:if>
                     </ul>
                 </div>
             </div>
@@ -48,7 +57,7 @@
             </div>
         </header>
         <!-- 마이페이지로 수정-->
-      
+
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
@@ -158,7 +167,7 @@
                     <h3 class="section-subheading text-muted">Get interested? feel free to join us.</h3>
                 </div>
                <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Serendipity는 익명으로 시 창작 및 감상을 할 수 있는 모임 공간입니다.</p></div>
+                    <div class="col-lg-4 ms-auto"><p class="lead"><br>Serendipity는 익명으로 시 창작 및 감상을 할 수 있는 모임 공간입니다.</p></div>
                     <div class="col-lg-4 me-auto"><p class="lead">이 곳에서 여러분 자신만의 Serendipity, 우연한 행운을 발견하세요!</p></div>
                 </div>
                
