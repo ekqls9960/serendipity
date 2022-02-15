@@ -68,7 +68,8 @@
 
                     <div class="col-md-10">
                     	<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-                        <form:input path="email" class="form-control" id="email" data-rule-required="true" placeholder="${member.email }" readonly="true" />
+                        <form:input path="email" class="form-control" id="email" data-rule-required="true" 
+                        value="${member.email }" placeholder="${member.email }" readonly="true" />
                         <form:errors path="email" class="errorMsg"/>
                         <br>
                     </div>
@@ -79,7 +80,7 @@
                     <label for="inputPassword" class="col-lg-2 control-label">비밀번호</label>
                     <div class="col-md-10">
                         
-                    	<form:password path="pwd" class="form-control" id="pwd"  data-rule-required="true" placeholder="(변경을 원하실 때만 입력해주세요.)" maxlength="30" />
+                    	<form:password path="pwd" class="form-control" id="pwd"  data-rule-required="true"  placeholder="(변경을 원하실 때만 입력해주세요.)" maxlength="30" />
                     	<form:errors path="pwd" class="errorMsg"/>
                      <br>
                      </div>
@@ -96,7 +97,7 @@
                 <div class="form-group" id="divNickname">
                     <label for="inputNickname" class="col-lg-2 control-label">닉네임</label>
                     <div class="col-md-10">
-                        <form:input path="nickname" class="form-control" id="nickname" data-rule-required="true" placeholder="${member.nickname }" maxlength="15" required="required"/>
+                        <form:input path="nickname" class="form-control"  value="${member.nickname }" id="nickname" data-rule-required="true" placeholder="${member.nickname }" maxlength="15" required="required"/>
                     	<form:errors path="nickname" class="errorMsg"/>
                    <br>
                      </div>
@@ -106,7 +107,7 @@
                     <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
                     <div class="col-md-10">
                     
-                    	<form:input path="phoneNum" class="form-control onlyNumber" id="phoneNum" data-rule-required="true" placeholder="${member.phoneNum }" maxlength="11" required="required"/>
+                    	<form:input path="phoneNum" class="form-control onlyNumber"  value="${member.phoneNum }" id="phoneNum" data-rule-required="true" readonly="true" placeholder="${member.phoneNum }" maxlength="11" required="required"/>
                     	<form:errors path="phoneNum" class="errorMsg"/>
                    <br>
                      </div>
@@ -114,7 +115,7 @@
                  <div class="form-inline-form-group">
                     <label for="postCode" class="col-lg-2 control-label">우편번호</label>
                     <div class="col-md-10">
-                    	<form:input path="postCode" class="form-control"/>
+                    	<form:input path="postCode" class="form-control"  value="${member.postCode }" placeholder="${member.postCode }"/>
                         <input type="button" class="btn btn-secondary btn-sm" onClick="execDaumPostcode()" value="우편번호 검색" required="required">
                         <form:errors path="postCode" class="errorMsg"/>
                      <br>
@@ -124,7 +125,7 @@
                 <div class="form-group">
                     <label for="roadAddr" class="col-lg-2 control-label">도로명 주소</label>
                     <div class="col-md-10">
-                        <form:input path="roadAddr" class="form-control" required="required"/>&nbsp;
+                        <form:input path="roadAddr" class="form-control" required="required"  value="${member.roadAddr }" placeholder="${member.roadAddr }"/>&nbsp;
                         <form:errors path="roadAddr" class="errorMsg"/>
                      <br>
                      </div>
@@ -132,7 +133,7 @@
                 <div class="form-group">
                     <label for="detailAddr" class="col-lg-2 control-label">상세 주소</label>
                     <div class="col-md-10">
-                        <form:input path="detailAddr" class="form-control" required="required"/>&nbsp;
+                        <form:input path="detailAddr" class="form-control" required="required" value="${member.detailAddr }" placeholder="${member.detailAddr }"/>&nbsp;
                         <form:errors path="detailAddr" class="errorMsg"/>
                      <br>
                      </div>

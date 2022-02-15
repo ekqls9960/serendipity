@@ -50,6 +50,8 @@ public class LoginServiceImpl implements LoginService {
 		return null;
 	}
 
+	
+	
 
 	@Override
 	public Member login(String email, String pwd) {

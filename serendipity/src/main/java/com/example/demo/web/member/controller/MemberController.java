@@ -1,6 +1,8 @@
 package com.example.demo.web.member.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import com.example.demo.domain.Member.EmailAuth;
 import com.example.demo.domain.Member.Member;
 import com.example.demo.web.login.form.LoginForm;
 import com.example.demo.web.mail.MailService;
+import com.example.demo.web.member.form.MemberEditForm;
 import com.example.demo.web.member.form.MemberJoinForm;
 import com.example.demo.web.member.service.MemberService;
 
@@ -33,20 +36,58 @@ public class MemberController {
 	
 	
 	@GetMapping("/edit")
-	public String editForm(Model model) {
-
-
-		MemberJoinForm form = new MemberJoinForm();
+	public String editForm(Model model, HttpSession session) {
+		MemberEditForm form = new MemberEditForm();
 		model.addAttribute("memberEditForm", form);
-		return "member/editForm";
 		
-	}
+		return "member/editForm";
+		}
+	
+	
+	@PostMapping("/edit")
+	public String edit(@Validated @ModelAttribute("memberEditForm") MemberEditForm form, 
+			BindingResult bindingResult, Model model, HttpSession session) {
+		
+		
+		if(bindingResult.hasErrors()){
+            log.info("errors={}", bindingResult);
+            return "member/editForm";
+        }
+
+		//비밀번호를 입력했는지 확인
+		if(!form.getPwd().equals("")) {
+			
+			//비밀번호 확인과 비밀번호가 일치하지 않는다면 바인딩 후 이동
+			if(!form.getPwd().equals(form.getConfirmPwd())) {
+		        	bindingResult.rejectValue("confirmPwd", "notMatching"); 
+		        	log.info("errors={}", bindingResult); // log 확인
+		        	return "member/editForm";
+		    }
+			
+			//비번이 일치하면 비번 바꿔줌.
+			memberService.changePwd(form.getEmail(), form.getPwd());
+		}
+		
+		//다른 정보 다 바꿔줌
+		Member member = memberService.findByEmail(form.getEmail());
+
+		System.out.println("여기---수정중---" + form.getPostCode());
+		member.setNickname(form.getNickname());
+		member.setRoadAddr(form.getRoadAddr());
+		member.setDetailAddr(form.getDetailAddr());
+		member.setPostCode(form.getPostCode());
+		memberService.update(member.getEmail(), member);
+		//새 정보로 세션 업데이트
+		session.setAttribute("member", member);
+		
+		return "redirect:/member/mypage";
+		}
+	
 	
 	
 	@GetMapping("/mypage")
-	public String mypage(Model model) {
-
-
+	public String mypage(Model model, HttpSession session) {
+		
 		return "member/mypage";
 		
 	}
@@ -114,8 +155,10 @@ public class MemberController {
 		Member member = new Member();
 		member.setEmail(form.getEmail());
 		member.setEmailAuthCode(emailAuthCode);
-		String addr = form.getPostCode() + " / " + form.getRoadAddr() + " / " + form.getDetailAddr();
-		member.setAddr(addr);
+
+		member.setRoadAddr(form.getRoadAddr());
+		member.setDetailAddr(form.getDetailAddr());
+		member.setPostCode(form.getPostCode());
 		member.setIsEmailAuth(EmailAuth.N);
 		member.setNickname(form.getNickname());
 		member.setPhoneNum(form.getPhoneNum());

@@ -56,11 +56,23 @@ public class MemberServiceImpl implements MemberService{
 		member.setIsEmailAuth(EmailAuth.Y);
 		memberMapper.updateIsEmailAuth(email, member);
 	}
+	
 
 	@Override
 	public List<Member> findAll() {
 		List<Member> list = memberMapper.selectAll();
 		return list;
+	}
+
+	@Override
+	public void changePwd(String email, String newPwd) {
+		memberMapper.updatePwd(email, newPwd);
+		return;
+	}
+
+	@Override
+	public void update(String email, Member member) {
+		memberMapper.update(email, member);
 	}
 	
 	

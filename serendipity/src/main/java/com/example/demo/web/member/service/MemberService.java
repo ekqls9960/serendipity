@@ -12,5 +12,7 @@ public interface MemberService {
 	Member findByPhoneNum(String phoneNum);
 	Member findByNickname(String nickname);
 	void changeEmailAuth(String email);
+	void changePwd(String email, String newPwd);
+	void update(String email, Member member);
 	List<Member> findAll();
 }

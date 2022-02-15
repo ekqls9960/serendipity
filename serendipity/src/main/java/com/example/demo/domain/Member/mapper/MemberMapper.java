@@ -13,8 +13,9 @@ import com.example.demo.domain.Member.Member;
 @Mapper
 public interface MemberMapper {
 
-	@Insert("insert into member(id, email, pwd, nickname, addr, phoneNum, emailAuthCode, isEmailAuth)"
-			+ "values(member_seq.nextval, #{email},  #{pwd},  #{nickname},  #{addr},  #{phoneNum},  #{emailAuthCode,jdbcType=VARCHAR},  #{isEmailAuth})")
+	@Insert("insert into member(id, email, pwd, nickname,  phoneNum, emailAuthCode, isEmailAuth, roadaddr, detailaddr, postcode)"
+			+ "values(member_seq.nextval, #{email},  #{pwd},  #{nickname},  "
+			+ "#{phoneNum},  #{emailAuthCode,jdbcType=VARCHAR},  #{isEmailAuth}, #{roadAddr}, #{detailAddr}, #{postCode})")
 	void save(Member member);
 	
 	@Select("select * from member")
@@ -39,7 +40,9 @@ public interface MemberMapper {
 	@Update("update member set pwd=#{tmpPwd} where email=#{email}")
 	void updatePwd(@Param("email")String email, @Param("tmpPwd")String tmpPwd );
 
-
+	 @Update("update member set nickname=#{member.nickname},roadAddr=#{member.roadAddr},detailAddr=#{member.detailAddr}, postcode=#{member.postCode}"
+	    		+ " where email=#{email}")
+	    void update(@Param("email")String email, @Param("member")Member member);
 
 
 
