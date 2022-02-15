@@ -1,8 +1,6 @@
 package com.example.demo.web.member.controller;
 
 
-import java.util.List;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.Member.EmailAuth;
 import com.example.demo.domain.Member.Member;
-import com.example.demo.domain.theme.Theme;
+import com.example.demo.web.login.form.LoginForm;
 import com.example.demo.web.mail.MailService;
 import com.example.demo.web.member.form.MemberJoinForm;
 import com.example.demo.web.member.service.MemberService;
-import com.example.demo.web.theme.service.ThemeService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +31,16 @@ public class MemberController {
 	private final MemberService memberService;
 	private final MailService mailService;
 	
+	
+	@GetMapping("/edit")
+	public String editForm(Model model) {
+
+
+		MemberJoinForm form = new MemberJoinForm();
+		model.addAttribute("memberEditForm", form);
+		return "member/editForm";
+		
+	}
 	
 	
 	@GetMapping("/mypage")
@@ -134,6 +141,7 @@ public class MemberController {
 		if(memberService.findByEmail(email).getEmailAuthCode().equals(emailAuthCode)) {
 			System.out.println("인증 코드가 일치함. 상태 바꿔드림");
 			memberService.changeEmailAuth(email);
+			model.addAttribute("loginForm", new LoginForm());
 			model.addAttribute("state", "emailChecked");
 	        return "login/loginForm";
 		}

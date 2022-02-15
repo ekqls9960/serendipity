@@ -20,7 +20,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
     
-    
+      		   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> 
+	<!--
+  		  <script src="https://kit.fontawesome.com/6344f7dee7.js" crossorigin="anonymous"></script>  -->
    		<script src="/js/addrPopup.js"></script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
@@ -56,27 +58,32 @@
                 <div class="row text-center">
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">E-Commerce</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
+                        <a href="${pageContext.request.contextPath}/poem/write">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Responsive Design</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                         </a></span>
+                       
+                        <h4 class="my-3">글쓰기</h4>
+                        
+                        <p class="text-muted">최신 주제에 맞는 글쓰기 창으로 넘어갑니다.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
+                          <a href="${pageContext.request.contextPath}/member/mywork">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-bookmark fa-stack-1x fa-inverse"></i>
+                        </a></span>
+                        <h4 class="my-3">나의 활동</h4>
+                        <p class="text-muted">나의 게시글, 댓글을 관리합니다.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                          <a href="${pageContext.request.contextPath}/member/edit">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Web Security</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                        </a></span>
+                        <h4 class="my-3">회원 정보 수정</h4>
+                        <p class="text-muted">닉네임, 비밀번호 등을 수정합니다.</p>
                     </div>
                 </div>
             </div>

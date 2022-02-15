@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 
     <head>
@@ -42,9 +42,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Poetry</a></li>
+                        <c:if test="${member != null }">
+                            <li class="nav-item"><a class="nav-link">${member.nickname }님 </a></li>
+                 
+                        </c:if>                        <li class="nav-item"><a class="nav-link" href="#portfolio">Poetry</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
+                        <c:if test="${member == null }">
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
+						</c:if>
+						<c:if test="${member != null }">
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">My page</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login/logout">Logout</a></li>
+                 
+                        </c:if>   
+                        
                     </ul>
                 </div>
             </div>
