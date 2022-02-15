@@ -63,7 +63,6 @@
                     <div class="col-md-10">
                     	<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
                         <form:input path="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" required="required"/>
-                        <form:errors path="email" class="errorMsg"/>
                         <br>
                     </div>
                 </div>
@@ -74,14 +73,16 @@
                     <div class="col-md-10">
                         
                     	<form:password path="pwd" class="form-control" id="pwd"  data-rule-required="true" placeholder="비밀번호" maxlength="30" required="required"/>
-                    	<form:errors path="pwd" class="errorMsg"/>
+              
                      <br>
                      </div>
+                           	<form:errors  class="errorMsg"/>
                 </div>
               
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                         <input type="submit" class="btn btn-primary btn-lg" value="로그인"> &nbsp;&nbsp;
+                        <input type="button" class="btn btn-dark btn-md" value="회원가입" onclick="window.location.href='${pageContext.request.contextPath}/member/join'">&nbsp;&nbsp;
                         <input type="button" class="btn btn-secondary btn-md" value="이메일찾기" onclick="window.location.href='${pageContext.request.contextPath}/login/findEmail'">&nbsp;&nbsp;
                         <input type="button" class="btn btn-secondary btn-md" value="비밀번호찾기" onclick="window.location.href='${pageContext.request.contextPath}/login/findPwd'">
                     </div>

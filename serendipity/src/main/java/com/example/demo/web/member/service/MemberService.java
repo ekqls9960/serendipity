@@ -1,5 +1,7 @@
 package com.example.demo.web.member.service;
 
+import java.util.List;
+
 import com.example.demo.domain.Member.Member;
 
 public interface MemberService {
@@ -10,4 +12,5 @@ public interface MemberService {
 	Member findByPhoneNum(String phoneNum);
 	Member findByNickname(String nickname);
 	void changeEmailAuth(String email);
+	List<Member> findAll();
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.domain.Member.EmailAuth;
 import com.example.demo.domain.Member.Member;
 import com.example.demo.web.login.form.FindEmailForm;
 import com.example.demo.web.login.form.FindPwdForm;
@@ -91,6 +92,16 @@ public class LoginController {
 		
 	}
 	
+	@GetMapping("/logout")
+	public String logoutForm(Model model, HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
+		System.out.println(member.getEmail());
+		session.invalidate();
+		//System.out.println(session.getAttribute("member"));
+		System.out.println("로그아웃 폼이동~~~~");
+		return "login/logoutForm";
+		
+	}
 	
 	@GetMapping("")
 	public String loginForm(Model model) {
@@ -106,20 +117,26 @@ public class LoginController {
 	public String loginForm(@Validated @ModelAttribute("loginForm") LoginForm form, BindingResult bindingResult, Model model
 			,HttpSession session) {
 
-		
 		if(bindingResult.hasErrors()){
             log.info("errors={}", bindingResult);
             return "login/findPwdForm";
         }
 		
-		
 		Member member = loginService.login(form.getEmail(), form.getPwd());
 
+		//계쩡이 없거나 비번 불일치
 		if(member == null) {
 			bindingResult.reject("NotExistingMember");
 			return "login/loginForm";
 		}
 		
+		//이메일 인증 전 계정
+		if(member.getIsEmailAuth().equals(EmailAuth.N)) {
+			bindingResult.reject("Unauthorized");
+			return "login/loginForm";
+		}
+		
+		//로그인성공
 		model.addAttribute("member", member);
 		session.setAttribute("member", member);
 		return "main";

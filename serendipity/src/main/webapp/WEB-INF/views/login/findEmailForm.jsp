@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                         <input type="submit" class="btn btn-primary btn-lg" value="이메일 찾기"> &nbsp;&nbsp;
-                        <input type="button" class="btn btn-secondary btn-md" value="뒤로" onclick="window.location.href='${pageContext.request.contextPath}/login'">&nbsp;&nbsp;
+                        <input type="button" class="btn btn-secondary btn-md" value="뒤로" onclick="history.back();">&nbsp;&nbsp;
                     </div>
                     <br>
      

@@ -1,5 +1,7 @@
 package com.example.demo.web.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +55,12 @@ public class MemberServiceImpl implements MemberService{
 		Member member = findByEmail(email);
 		member.setIsEmailAuth(EmailAuth.Y);
 		memberMapper.updateIsEmailAuth(email, member);
+	}
+
+	@Override
+	public List<Member> findAll() {
+		List<Member> list = memberMapper.selectAll();
+		return list;
 	}
 	
 	

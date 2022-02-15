@@ -54,7 +54,9 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public Member login(String email, String pwd) {
 		Member member = memberMapper.selectByEmail(email);
+
 		if(member != null) {
+
 			if(member.getPwd().equals(pwd)) {
 				//로그인성공
 				return member;

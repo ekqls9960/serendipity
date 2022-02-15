@@ -1,5 +1,7 @@
 package com.example.demo.domain.Member.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -15,6 +17,8 @@ public interface MemberMapper {
 			+ "values(member_seq.nextval, #{email},  #{pwd},  #{nickname},  #{addr},  #{phoneNum},  #{emailAuthCode,jdbcType=VARCHAR},  #{isEmailAuth})")
 	void save(Member member);
 	
+	@Select("select * from member")
+	List<Member> selectAll();
 	
 	@Select("select * from member where id=#{id}")
 	Member selectById(Long id);
