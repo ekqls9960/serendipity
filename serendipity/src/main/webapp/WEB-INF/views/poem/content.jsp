@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>나의 활동 -SERENDIPITY</title>
+        <title>게시글 상세 -SERENDIPITY</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -52,24 +52,64 @@
           <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">나의 활동</h2>
-                    <h3 class="section-subheading text-muted">${member.nickname }님의 활동 목록입니다.</h3>
+                    <h2 class="section-heading text-uppercase">게시글 상세</h2>
+                    <h3 class="section-subheading text-muted">조회수 : ${poem.hit} / 댓글: ${poem.commentCount }</h3>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-5">
-                        
-                       
+                    <div class="col-md-6">
                         <h4 class="my-3">내 게시물</h4><p class="text-muted">등록한 시 목록입니다.</p>
-                    </div>
+                    <br>
+                    <div>
+	                    <table class="table table-hover table-borderless">
+	                   
+		                    	<tr class="table-primary ">
+		                    		<th> # </th>
+		                    		<th> TITLE </th>
+	                    			<th> COMMENT </th>
+	                    			<th> HIT </th>
+	                    			<th> DATE </th>
+		                    	
+		                    	</tr>
+	                    	 <c:forEach var="poem" items="${poemlist }">
+		                    	<tr>
+		                    		<td> ${poem.id }</td>
+		                    		<td> ${poem.title }</td>
+		                    		<td> ${poem.commentCount }</td>
+		                    		<td> ${poem.hit }</td>
+		                    		<td> ${poem.regDate }</td>
+		                    	</tr>
+		                    
+	                    </c:forEach>
+	                  </table> 	
+                   </div>
                     
-                    <div class="col-md-5">
+                  </div>
+                 
+                    
+                    
+                    <div class="col-md-6">
                        
                         <h4 class="my-3">내 댓글</h4>
                         <p class="text-muted">등록한 댓글 목록입니다.</p>
                     </div>
                 
-                </div>
+              
             </div>
+                   <br><br><br><br><br><br>
+            
+            	  <div class="text-center">
+                    <div class="col-lg-offset-2 col-lg-10">
+                         &nbsp;&nbsp;
+                        <input type="button" class="btn btn-secondary btn-md" value="뒤로" onclick="history.back();">&nbsp;&nbsp;
+                        <input type="button" class="btn btn-primary btn-md" value="메인으로"  onclick="window.location.href='${pageContext.request.contextPath}/'">
+                    </div>
+                    <br>
+     
+                    <br>
+                </div>
+            
+           </div>
+           
         </section>
  <br>
  <br>

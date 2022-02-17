@@ -31,5 +31,14 @@ public class PoemServiceImpl implements PoemService{
 
 		poemMapper.save(poem);
 	}
+	@Override
+	public List<Poem> findByMemberId(Long memberId) {
+		
+		return poemMapper.selectByMemberId(memberId);
+	}
+	@Override
+	public Poem findById(Long id) {
+		return poemMapper.selectById(id);
+	}
 
 }

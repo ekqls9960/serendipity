@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
-                          <a href="${pageContext.request.contextPath}/member/mywork">
+                          <a href="${pageContext.request.contextPath}/poem/mywork">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-bookmark fa-stack-1x fa-inverse"></i>
                         </a></span>

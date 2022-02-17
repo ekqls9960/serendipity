@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -39,6 +40,34 @@ public class PoemController {
 	ThemeService themeService;
 	@Autowired
 	MemberService memberService;
+	
+	
+	
+	
+	@GetMapping("/content/{id}")
+	public String content(@PathVariable("id")Long id, Model model, HttpSession session) {
+		System.out.println("=================");
+		System.out.println("poem.id : " + id);
+		Poem poem = (Poem)poemService.findById(id);
+		model.addAttribute("poem", poem);
+		return "poem/content";
+		
+	}
+	
+	
+	
+	@GetMapping("/mywork")
+	public String mywork(Model model, HttpSession session) {
+		
+		Member member = (Member)session.getAttribute("member");
+		List<Poem> poemlist = poemService.findByMemberId(member.getId());
+		System.out.println(poemlist);
+		System.out.println(poemlist.size());
+		model.addAttribute("poemlist", poemlist);
+		return "poem/mywork";
+		
+	}
+	
 	
 	@GetMapping("/write")
 	public String writeForm(Model model) {

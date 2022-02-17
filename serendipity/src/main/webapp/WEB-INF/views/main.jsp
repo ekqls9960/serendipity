@@ -22,6 +22,28 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        
+        
+        <!-- dddddddd -->
+        	<script src="/js/addrPopup.js"></script>
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+         <%@ include file="common/header.jsp" %>
+         
+         <style>
+         .errorMsg{ color:red;
+         } 
+         
+         .center{
+
+         }
+         
+
+         
+
+         </style>
+    
+        
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -57,7 +79,13 @@
             <div class="container">
                 <div class="masthead-subheading">Welcome :)</div>
                 <div class="masthead-heading text-uppercase">Jump into Serendipity!</div>
+                 <c:if test="${member != null }">
+                 	<a class="btn btn-primary btn-xl text-uppercase" href="${pageContext.request.contextPath}/poem/write">Create one</a>
+                 	
+                 </c:if>
+                  <c:if test="${member == null }">
                 <a class="btn btn-primary btn-xl text-uppercase" href="${pageContext.request.contextPath}/member/join">Free join</a>
+            	</c:if>
             </div>
         </header>
         <!-- 마이페이지로 수정-->

@@ -31,11 +31,12 @@
     </style>
 
     <body id="page-top">
-    <div>
+
         <!-- Navigation-->
+      <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="/">Serendipity</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/">Serendipity</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -43,11 +44,12 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <c:if test="${member != null }">
-                            <li class="nav-item"><a class="nav-link">${member.nickname }님 </a></li>
+                            <li class="nav-item"><a class="nav-link">${member.nickname }님~</a></li>
                  
                         </c:if>                        <li class="nav-item"><a class="nav-link" href="#portfolio">Poetry</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        
                         <c:if test="${member == null }">
+                     	   <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
 						</c:if>
 						<c:if test="${member != null }">
@@ -60,11 +62,20 @@
                 </div>
             </div>
         </nav>
-    </div>
+  
     <br>
     <br>
 
 <br>
 <br>
+       <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

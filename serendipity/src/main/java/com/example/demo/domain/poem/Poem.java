@@ -21,7 +21,7 @@ public class Poem {
 	private String content;
 	private Long hit ;
 	private Long commentCount;
-	private Date date;
+	private Date regDate;
 	
 	
 	

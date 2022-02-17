@@ -112,7 +112,7 @@
             
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <input type="submit" class="btn btn-primary btn-lg" value="작성 완료">
+                        <input type="submit" class="btn btn-warning btn-lg" value="작성 완료">
                     </div>
                 </div>
             </form:form>

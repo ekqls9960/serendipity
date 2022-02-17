@@ -92,12 +92,7 @@ public class MemberController {
 		
 	}
 	
-	@GetMapping("/mywork")
-	public String mywork(Model model, HttpSession session) {
-		
-		return "member/mywork";
-		
-	}
+	
 	
 	@GetMapping("/join")
 	public String joinForm(Model model) {

@@ -23,4 +23,12 @@ public interface PoemMapper {
 	void save(@Param("poem")Poem poem);
 
 
+	@Select("select * from poem where memberId=#{memberId}")
+	List<Poem> selectByMemberId(Long memberId);
+
+	
+	@Select("select * from poem where id=#{id}")
+	Poem selectById(Long id);
+	
+	
 }
