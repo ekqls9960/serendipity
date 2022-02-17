@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.domain.Member.Member;
+import com.example.demo.domain.poem.Poem;
 import com.example.demo.domain.theme.Theme;
 import com.example.demo.web.member.form.MemberEditForm;
+import com.example.demo.web.member.service.MemberService;
 import com.example.demo.web.poem.form.PoemWriteForm;
 import com.example.demo.web.poem.service.PoemService;
+import com.example.demo.web.theme.service.ThemeService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +35,10 @@ public class PoemController {
 	
 	@Autowired
 	PoemService poemService;
+	@Autowired
+	ThemeService themeService;
+	@Autowired
+	MemberService memberService;
 	
 	@GetMapping("/write")
 	public String writeForm(Model model) {
@@ -41,6 +49,29 @@ public class PoemController {
 		model.addAttribute("themelist", themelist);
 		return "poem/writeForm";
 		}
+	
+	@PostMapping("/write")
+	public String write(@Validated @ModelAttribute("poemWriteForm") PoemWriteForm form, 
+			BindingResult bindingResult, Model model, HttpSession session) {
+		System.out.println(form.getTheme());
+		System.out.println(form.getTitle());
+		System.out.println(form.getContent());
+		
+		Long themeId = themeService.findByThemename(form.getTheme());
+		Member member = (Member) session.getAttribute("member");
+		Long memberId = member.getId();
+		
+		Poem poem = new Poem();
+		poem.setMemberId(memberId);
+		poem.setThemeId(themeId);
+		poem.setTitle(form.getTitle());
+		poem.setContent(form.getContent());
+		
+		poemService.save(poem);
+				return "member/mypage";
+	
+	}
+		
 	
 	
 	@PostMapping("/edit")

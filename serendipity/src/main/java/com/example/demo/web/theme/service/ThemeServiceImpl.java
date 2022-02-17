@@ -21,5 +21,11 @@ public class ThemeServiceImpl implements ThemeService{
 		return themeMapper.selectAll();
 	
 	}
+	@Override
+	public Long findByThemename(String themename) {
+		
+	System.out.println("서비스 들어옴 : long  = " + themeMapper.selectByThemename(themename));
+		return 	themeMapper.selectByThemename(themename);
+	}
 
 }

@@ -21,12 +21,15 @@
         <link href="../css/styles.css" rel="stylesheet" />	<script src="/js/addrPopup.js"></script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-	<!-- summernote -->
-	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-         <%@ include file="../common/header.jsp" %>
+<!-- include summernote css/js-->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+         <%@ include file="../common/header.jsp" %> 
          
          <style>
          .errorMsg{ color:red;
@@ -55,11 +58,11 @@
     
  
  
-  <section class="page-section bg-light" id="editForm">
+  <section class="page-section bg-light" id="poemwriteForm">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">작성하기</h2>
-                    <h3 class="section-subheading text-muted">주제에 맞춰 시를 작성해주세요 :)</h3>
+                    <h3 class="section-subheading text-muted">주제에 맞는 시를 작성해주세요 :)</h3>
                 </div>
               <div class="center">
               	   <form:form class="form-horizontal" modelAttribute="poemWriteForm" role="form" method="post" action="${pageContext.request.contextPath}/poem/write">
@@ -67,25 +70,29 @@
 
                 
                 <div class="form-group" id="divEmail">
+                   
+                    	<label for="inputEmail" class="col-lg-2 control-label">주제</label>
+	                    	  <div class="col-lg-5">
+	                    	  <form:select class="form-select" path="theme" aria-label="주제를 선택해주세요." required="required">
+	                   		 	<form:option value="" hidden="hidden" selected="selected" disabled="disabled"> 주제를 선택해주세요. </form:option>
+	                   		 
+	                    		<c:forEach var="theme" items="${themelist }">
+	                    		
+									<form:option value="${theme.themename }"># ${theme.themename }</form:option>
 
-                    <div class="col-md-10">
-                    	<label for="inputEmail" class="col-lg-2 control-label">주제선택</label>
-	                    	<form:select class="form-control" path="title">
-	                    	<c:forEach var="theme" items="${themelist }">
-								<form:option value="${theme.themename }"># ${theme.themename }</form:option>
-
-							</c:forEach>
-						</form:select>
+								</c:forEach>
+							</form:select>
+							</div>
                         <form:errors path="theme" class="errorMsg"/>
                         <br>
-                    </div>
+                 
                 </div>
 
 
                 
                 <div class="form-group" id="divNickname">
                     <label for="inputNickname" class="col-lg-2 control-label">제목</label>
-                    <div class="col-md-10">
+                    <div class="col-lg-5">
                         <form:input path="title" class="form-control" id="title" required="required"/>
                     	<form:errors path="title" class="errorMsg"/>
                    <br>
@@ -94,7 +101,7 @@
                 
                 <div class="form-group" id="divPhoneNumber">
                     <label for="inputPhoneNumber" class="col-lg-2 control-label">내용</label>
-                    <div class="col-md-10">
+                    <div class="col-md-5">
                     <textarea class="summernote" name="content"></textarea>
                     	
                     	<form:errors path="content" class="errorMsg"/>

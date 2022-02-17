@@ -7,5 +7,5 @@ import com.example.demo.domain.theme.Theme;
 public interface ThemeService {
 	
 	List<Theme> findAll();
-
+	Long findByThemename(String themename);
 }
