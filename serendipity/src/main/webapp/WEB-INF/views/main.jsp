@@ -24,25 +24,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         
         
-        <!-- dddddddd -->
-        	<script src="/js/addrPopup.js"></script>
-		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-         <%@ include file="common/header.jsp" %>
-         
-         <style>
-         .errorMsg{ color:red;
-         } 
-         
-         .center{
-
-         }
-         
-
-         
-
-         </style>
-    
+        
         
     </head>
     <body id="page-top">

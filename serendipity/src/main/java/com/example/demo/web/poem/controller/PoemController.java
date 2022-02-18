@@ -12,11 +12,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.domain.Member.Member;
+import com.example.demo.domain.poem.Content;
 import com.example.demo.domain.poem.Poem;
 import com.example.demo.domain.theme.Theme;
 import com.example.demo.web.member.form.MemberEditForm;
@@ -43,16 +43,28 @@ public class PoemController {
 	
 	
 	
-	
-	@GetMapping("/content/{id}")
-	public String content(@PathVariable("id")Long id, Model model, HttpSession session) {
+	@GetMapping("/content")
+	public String content(@ModelAttribute("content") Content content,Model model, HttpSession session) {
 		System.out.println("=================");
-		System.out.println("poem.id : " + id);
-		Poem poem = (Poem)poemService.findById(id);
+		System.out.println("poem.id : " + content.getId());
+		//조회수 1 올리기? 아 본인꺼는 올리지 말자.
+		Long id = content.getId();
+		
+		Poem poem = new Poem();
+		poem = poemService.findById(id);
 		model.addAttribute("poem", poem);
 		return "poem/content";
 		
 	}
+//	@GetMapping("/content/{id}")
+//	public String content(@PathVariable("id")Long id, Model model, HttpSession session) {
+//		System.out.println("=================");
+//		System.out.println("poem.id : " + id);
+//		Poem poem = (Poem)poemService.findById(id);
+//		model.addAttribute("poem", poem);
+//		return "poem/content";
+//		
+//	}
 	
 	
 	
@@ -64,6 +76,7 @@ public class PoemController {
 		System.out.println(poemlist);
 		System.out.println(poemlist.size());
 		model.addAttribute("poemlist", poemlist);
+		model.addAttribute("content", new Content());
 		return "poem/mywork";
 		
 	}

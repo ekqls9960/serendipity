@@ -132,8 +132,20 @@
         width:800,
         lang: "ko-KR"
       });
+      
+      
+      
     </script>
-
+  <script>
+    $('.summernote').summernote({
+  	  height:700,
+  	  minHeight:null
+    })
+    
+	  var content = '${poem.content}';
+      $('.summernote').summernote('code',content);
+   
+    </script>
     <%@ include file="../common/footer.jsp" %>
 
     </body>

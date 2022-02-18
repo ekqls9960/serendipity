@@ -77,22 +77,28 @@
 			                   
 				                    	<tr class="table-primary ">
 				                    		<th> # </th>
-				                    		<th> TITLE </th>
+				                    		<th> THEME </th>
 			                    			<th> COMMENT </th>
 			                    			<th> HIT </th>
 			                    			<th> DATE </th>
-				                    	
+				                    		<th>  </th>
 				                    	</tr>
 			                    	 <c:forEach var="poem" items="${poemlist }">
+			                    	 <c:set var="i" value="${i+1 }"/>
+			                    	 <form:form class="form-horizontal" modelAttribute="content" role="form" method="get" action="${pageContext.request.contextPath}/poem/content">
 			                    	 	
-				                    	<tr onclick="location.href='${pageContext.request.contextPath }/poem/content/${poem.id}'">
-				                    		<td> ${poem.id }</td>
+				                    	<tr>
+				                    		<td> ${i }</td>
 				                    		<td> ${poem.title }</td>
 				                    		<td> ${poem.commentCount }</td>
 				                    		<td> ${poem.hit }</td>
 				                    		<td> ${poem.regDate }</td>
+				                    		<form:input type="hidden" path="id" value="${poem.id }" />
+				                    		<td><input type="submit" class="btn btn-primary btn-sm" value="상세"></td>
+
 				                    	</tr>
-				                    
+				                    	
+				                    </form:form>
 			                    </c:forEach>
 			                  </table> 	
 			                   </c:if>
@@ -114,10 +120,10 @@
                    <br><br><br><br><br><br>
             
             	  <div class="text-center">
-                    <div class="col-lg-offset-2 col-lg-10">
+                    <div >
                          &nbsp;&nbsp;
                         <input type="button" class="btn btn-secondary btn-md" value="뒤로" onclick="history.back();">&nbsp;&nbsp;
-                        <input type="button" class="btn btn-dark btn-md" value="메인으로"  onclick="window.location.href='${pageContext.request.contextPath}/'">
+                        <input type="button" class="btn btn-dark btn-md" value="메인"  onclick="window.location.href='${pageContext.request.contextPath}/'">
                     </div>
                     <br>
      
