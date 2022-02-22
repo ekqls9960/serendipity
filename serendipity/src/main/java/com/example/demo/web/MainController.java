@@ -26,6 +26,7 @@ public class MainController {
 		
 		List<Theme> list = themeService.findAll();
 		model.addAttribute("list", list);
+		model.addAttribute("theme", new Theme());
 
 		
 		

@@ -8,4 +8,5 @@ public interface ThemeService {
 	
 	List<Theme> findAll();
 	Long findByThemename(String themename);
+	String findByThemeId(Long id);
 }

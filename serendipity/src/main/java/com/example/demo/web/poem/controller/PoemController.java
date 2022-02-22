@@ -45,13 +45,22 @@ public class PoemController {
 	
 	@GetMapping("/content")
 	public String content(@ModelAttribute("content") Content content,Model model, HttpSession session) {
-		System.out.println("=================");
-		System.out.println("poem.id : " + content.getId());
-		//조회수 1 올리기? 아 본인꺼는 올리지 말자.
+
+	
 		Long id = content.getId();
-		
 		Poem poem = new Poem();
 		poem = poemService.findById(id);
+		
+		Member member = (Member)session.getAttribute("member");
+
+		if(member.getId() != poem.getMemberId()) {
+			//조회수 1 올리기? 아 본인꺼는 올리지 말자.
+			
+			poemService.hitPlus(poem.getId());
+			System.out.println("***----조회수 1 올라감!!----");
+		}
+		
+		
 		model.addAttribute("poem", poem);
 		return "poem/content";
 		
@@ -66,6 +75,21 @@ public class PoemController {
 //		
 //	}
 	
+	@GetMapping("/themecontent")
+	public String themecontent(@ModelAttribute("theme") Theme theme, Model model, HttpSession session) {
+		System.out.println("=================");
+		System.out.println("theme.id : " + theme.getId());
+		String themename = themeService.findByThemeId(theme.getId());
+		model.addAttribute("themename", themename);
+		List<Poem> poemlist = poemService.findByThemeId(theme.getId());
+		System.out.println(poemlist);
+		System.out.println(poemlist.size());
+		model.addAttribute("poemlist", poemlist);
+		model.addAttribute("content", new Content());
+	
+		return "poem/themecontent";
+		
+	}
 	
 	
 	@GetMapping("/mywork")
@@ -105,6 +129,7 @@ public class PoemController {
 		
 		Poem poem = new Poem();
 		poem.setMemberId(memberId);
+		poem.setMemberNickname(form.getMemberNickname());
 		poem.setThemeId(themeId);
 		poem.setTitle(form.getTitle());
 		poem.setContent(form.getContent());

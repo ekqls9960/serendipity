@@ -11,7 +11,10 @@ public interface PoemService {
 	List<Theme> themelist();
 	void save(Poem poem);
 	List<Poem>  findByMemberId(Long memberId);
+	List<Poem>  findByThemeId(Long memberId);
+
 	Poem findById(Long id);
+	void hitPlus(Long id);
 	
 
 }

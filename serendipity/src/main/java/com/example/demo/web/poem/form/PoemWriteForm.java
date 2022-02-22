@@ -12,5 +12,6 @@ public class PoemWriteForm {
 	private String theme;
 	private String title;
 	private String content;
+	private String memberNickname;
 
 }

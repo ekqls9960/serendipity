@@ -139,7 +139,7 @@ public class LoginController {
 		//로그인성공
 		model.addAttribute("member", member);
 		session.setAttribute("member", member);
-		return "main";
+		return "redirect:/";
 		
 	}
 	

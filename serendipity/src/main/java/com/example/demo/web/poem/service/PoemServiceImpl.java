@@ -40,5 +40,14 @@ public class PoemServiceImpl implements PoemService{
 	public Poem findById(Long id) {
 		return poemMapper.selectById(id);
 	}
+	@Override
+	public List<Poem> findByThemeId(Long themeId) {
+		return poemMapper.selectByThemeId(themeId);
+	}
+	@Override
+	public void hitPlus(Long id) {
+		poemMapper.updateHit(id);
+		
+	}
 
 }

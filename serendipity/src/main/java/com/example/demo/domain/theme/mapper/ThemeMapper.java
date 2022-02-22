@@ -21,6 +21,9 @@ public interface ThemeMapper {
 	Long selectByThemename(String themename);
 
 
+	@Select("select themename from theme where id=#{id}")
+	String selectById(Long id);
+
 
 
 

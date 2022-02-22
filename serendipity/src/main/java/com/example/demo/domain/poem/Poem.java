@@ -23,6 +23,9 @@ public class Poem {
 	private Long commentCount;
 	private Date regDate;
 	
+	//fix
+	private String memberNickname;
+	
 	
 	
 }

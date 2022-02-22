@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.domain.poem.Poem;
 import com.example.demo.domain.theme.Theme;
@@ -18,8 +19,8 @@ public interface PoemMapper {
 	@Select("select themename from theme")
 	List<Theme> selectAll();
 	
-	@Insert("insert into poem(id, memberId, themeId, title, content)"
-			+ "values(poem_seq.nextval, #{poem.memberId}, #{poem.themeId}, #{poem.title}, #{poem.content} )")
+	@Insert("insert into poem(id, memberId, themeId, title, content, memberNickname)"
+			+ "values(poem_seq.nextval, #{poem.memberId}, #{poem.themeId}, #{poem.title}, #{poem.content}, #{poem.memberNickname} )")
 	void save(@Param("poem")Poem poem);
 
 
@@ -31,4 +32,9 @@ public interface PoemMapper {
 	Poem selectById(Long id);
 	
 	
+	@Select("select * from poem where themeId=#{themeId}")
+	List<Poem> selectByThemeId(Long themeId);
+	
+	@Update("update Poem set hit = hit + 1 where id=#{id} ")
+	void updateHit(Long id);
 }

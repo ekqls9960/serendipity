@@ -2,7 +2,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
          
          
 <html lang="en">
@@ -86,16 +87,21 @@
                        
 	                        <div class="col-lg-4 col-sm-6 mb-4">
 		                        <div class="portfolio-item">
-		                            <a class="portfolio-link" href="${pageContext.request.contextPath}/member/join">
-		                                <div class="portfolio-hover">
-		                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-		                                </div>
-		                                <img class="img-fluid" src="assets/img/portfolio/${theme.id }.jpg" alt="..." />
-		                            </a>
-		                            <div class="portfolio-caption">
-		                                <div class="portfolio-caption-heading">${theme.themename }</div>
-		                                <div class="portfolio-caption-subheading text-muted">#${theme.id }</div>
-		                            </div>
+		                        	<form:form class="form-horizontal" modelAttribute="theme" role="form" method="get" action="${pageContext.request.contextPath}/poem/themecontent">
+			                       
+			                            <a class="portfolio-link" >
+			                                <div class="portfolio-hover">
+			                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+			                                </div>
+			                                <img class="img-fluid" src="assets/img/portfolio/${theme.id }.jpg" alt="..." />
+			                            </a>
+			                            <div class="portfolio-caption">
+			                                <div class="portfolio-caption-heading">${theme.themename }</div>
+			                                <div class="portfolio-caption-subheading text-muted">#${theme.id }</div>
+			                            </div>
+		                            <form:input type="hidden" path="id" value="${theme.id }" />
+		                            <input type="submit" class="btn btn-primary btn-sm" value="상세">
+		                            </form:form>
 		                        </div>
 	                 	  </div>
                         </c:forEach>

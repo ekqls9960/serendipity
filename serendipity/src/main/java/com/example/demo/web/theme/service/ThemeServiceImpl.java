@@ -27,5 +27,9 @@ public class ThemeServiceImpl implements ThemeService{
 	System.out.println("서비스 들어옴 : long  = " + themeMapper.selectByThemename(themename));
 		return 	themeMapper.selectByThemename(themename);
 	}
+	@Override
+	public String findByThemeId(Long id) {
+		return themeMapper.selectById(id);
+	}
 
 }

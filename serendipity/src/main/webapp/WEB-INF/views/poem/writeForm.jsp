@@ -90,8 +90,8 @@
 
 
                 
-                <div class="form-group" id="divNickname">
-                    <label for="inputNickname" class="col-lg-2 control-label">제목</label>
+                <div class="form-group" id="divTitle">
+                    <label for="inputTitle" class="col-lg-2 control-label">제목</label>
                     <div class="col-lg-5">
                         <form:input path="title" class="form-control" id="title" required="required"/>
                     	<form:errors path="title" class="errorMsg"/>
@@ -99,8 +99,17 @@
                      </div>
                 </div>
                 
-                <div class="form-group" id="divPhoneNumber">
-                    <label for="inputPhoneNumber" class="col-lg-2 control-label">내용</label>
+                 <div class="form-group" id="divNickname">
+                    <label for="inputNickname" class="col-lg-2 control-label">작성자</label>
+                    <div class="col-lg-5">
+                        <form:input path="memberNickname" class="form-control" value="${member.nickname }" id="memberNickname" required="required" readonly="true"/>
+                    	<form:errors path="memberNickname" class="errorMsg"/>
+                   <br>
+                     </div>
+                </div>
+                
+                <div class="form-group" id="divContent">
+                    <label for="inputContent" class="col-lg-2 control-label">내용</label>
                     <div class="col-md-5">
                     <textarea class="summernote" name="content"></textarea>
                     	
