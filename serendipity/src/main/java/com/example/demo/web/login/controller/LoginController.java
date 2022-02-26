@@ -33,53 +33,54 @@ public class LoginController {
 	@GetMapping("/findPwd")
 	public String findPwdForm(Model model) {
 		model.addAttribute("findPwdForm", new FindPwdForm());
-		System.out.println("비번찾기 폼 이동~~~~");
-		return "login/findPwdForm";
 		
+		return "login/findPwdForm";
 	}
+	
+	
+	
 	
 	@PostMapping("/findPwd")
 	public String findPwd(@Validated @ModelAttribute("findPwdForm") FindPwdForm form, BindingResult bindingResult, Model model) {
 
-		System.out.println("비번찾기 포스트 들옴 : " + form.getEmail());
 		if(bindingResult.hasErrors()){
             log.info("errors={}", bindingResult);
             return "login/findPwdForm";
         }
-		
 		
 		String tmpPwd = loginService.changePwd(form.getEmail(), form.getPhoneNum());
 		if(tmpPwd == null) {
 			bindingResult.reject("NotExistingMember");
 			return "login/findPwdForm";
 		}
-		System.out.println("tmpPwd : " + tmpPwd);
-		model.addAttribute("email", form.getEmail());
-		return "login/findPwd";
 		
+		model.addAttribute("email", form.getEmail());
+		
+		return "login/findPwd";
 	}
 	
 	@GetMapping("/findEmail")
 	public String findEmailForm(Model model) {
 		model.addAttribute("findEmailForm", new FindEmailForm());
-		System.out.println("이메일 찾기 폼 이동~~~~");
+		
 		return "login/findEmailForm";
 		
 	}
 	
+	
+	
+	
 	@PostMapping("/findEmail")
-	public String findEmail(@Validated @ModelAttribute("findEmailForm") FindEmailForm form, BindingResult bindingResult, Model model) {
-		System.out.println("이메일 찾기 들어옴~~~~");
-		System.out.println("입력한 닉네임 : " + form.getNickname());
-		System.out.println("입력한 휴대폰 : " + form.getPhoneNum());
-		
+	public String findEmail(@Validated @ModelAttribute("findEmailForm") FindEmailForm form, 
+			BindingResult bindingResult, Model model) {
+	
 		
 		if(bindingResult.hasErrors()){
             log.info("errors={}", bindingResult);
             return "login/findEmailForm";
         }
 		
-		String email = loginService.findEmail(form.getNickname(), form.getPhoneNum());
+			String email = loginService.findEmail(form.getNickname(), form.getPhoneNum());
 
 		   if (email==null) {
 	        	bindingResult.reject("NotExistingMember");
@@ -88,25 +89,31 @@ public class LoginController {
 		   
 		//정보 일치시
 		model.addAttribute("email", email);
+		
 		return "login/findEmail";
 		
 	}
 	
+	
+	
+	
+	
 	@GetMapping("/logout")
 	public String logoutForm(Model model, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
-		System.out.println(member.getEmail());
 		session.invalidate();
-		//System.out.println(session.getAttribute("member"));
-		System.out.println("로그아웃 폼이동~~~~");
+		
 		return "login/logoutForm";
 		
 	}
 	
+	
+	
+	
 	@GetMapping("")
 	public String loginForm(Model model) {
 		model.addAttribute("loginForm", new LoginForm());
-		System.out.println("로그인폼 이동~~~~");
+		
 		return "login/loginForm";
 		
 	}

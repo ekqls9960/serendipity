@@ -113,6 +113,51 @@
                        
                         <h4 class="my-3">내 댓글</h4>
                         <p class="text-muted">등록한 댓글 목록입니다.</p>
+                        <br>
+                        
+                          <div>
+		                    
+		                     <c:if test="${responselist == '[]' }">
+	                  			<br>
+			                   <h5>작성한 댓글이 없습니다.</h5>
+			                   <input type="button" class="btn btn-primary btn-md" value="시 감상하러 가기"  onclick="window.location.href='${pageContext.request.contextPath}/'">
+			                   
+			                  </c:if>
+			                   <c:if test="${responselist != '[]' }">
+			                    <table class="table table-hover table-borderless">
+			                   
+				                    	<tr class="table-primary ">
+				                    		<th> # </th>
+				                    		<th> TITLE </th>
+			                    			<th colspan="3"> COMMENT </th>
+			                    			
+			                    			<th> DATE </th>
+				                    		<th>  </th>
+				                    	</tr>
+			                    	 <c:forEach var="res" items="${responselist }">
+			                    	 <c:set var="j" value="${j+1 }"/>
+			                    	 <form:form class="form-horizontal" modelAttribute="content" role="form" method="get" action="${pageContext.request.contextPath}/poem/content">
+			                    	 	
+				                    	<tr>
+				                    		<td> ${j }</td>
+				                    		<td> ${res.poemTitle }</td>
+				                    		<td colspan="3"> ${res.content }</td>
+				                    		<td> ${res.regDate }</td>
+				                  
+				                    		<form:input type="hidden" path="id" value="${res.poemId }" />
+				                    		<td><input type="submit" class="btn btn-primary btn-sm" value="상세"></td>
+
+				                    	</tr>
+				                    	
+				                    </form:form>
+			                    </c:forEach>
+			                  </table> 	
+			                   </c:if>
+		                   </div>
+                        
+                        
+                        
+                        
                     </div>
                 
               

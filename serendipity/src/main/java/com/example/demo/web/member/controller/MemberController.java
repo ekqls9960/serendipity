@@ -44,6 +44,7 @@ public class MemberController {
 		}
 	
 	
+	
 	@PostMapping("/edit")
 	public String edit(@Validated @ModelAttribute("memberEditForm") MemberEditForm form, 
 			BindingResult bindingResult, Model model, HttpSession session) {
@@ -126,7 +127,6 @@ public class MemberController {
 		if(memberService.findByEmail(form.getEmail()) != null){
 			bindingResult.rejectValue("email", "duplicated");
 			log.info("errors={}", bindingResult);
-			System.out.println("email중복~~~~~~~~~");
 			return "member/joinForm";
 		}
 		
@@ -134,7 +134,6 @@ public class MemberController {
 		if(memberService.findByNickname(form.getNickname()) != null){
 			bindingResult.rejectValue("nickname", "duplicated");
 			log.info("errors={}", bindingResult);
-			System.out.println("nickname중복~~~~~~~~~");
 			return "member/joinForm";
 		}
 		
@@ -143,7 +142,6 @@ public class MemberController {
 		if(memberService.findByPhoneNum(form.getPhoneNum()) != null){
 			bindingResult.rejectValue("phoneNum", "duplicated");
 			log.info("errors={}", bindingResult);
-			System.out.println("phoneNum중복~~~~~~~~~");
 			return "member/joinForm";
 		}
 		
@@ -157,7 +155,6 @@ public class MemberController {
 		Member member = new Member();
 		member.setEmail(form.getEmail());
 		member.setEmailAuthCode(emailAuthCode);
-
 		member.setRoadAddr(form.getRoadAddr());
 		member.setDetailAddr(form.getDetailAddr());
 		member.setPostCode(form.getPostCode());
@@ -169,9 +166,7 @@ public class MemberController {
 		//인증 메일 발송
 		mailService.sendEmailAuthMail(form.getEmail(), emailAuthCode);
 		model.addAttribute("email", form.getEmail());
-		memberService.join(member);
-		System.out.println("db에 저장완료");
-		
+		memberService.join(member);		
 		
 		return "member/emailSent";
 		
@@ -180,16 +175,15 @@ public class MemberController {
 	
 	@GetMapping("/emailAuthCallBack")
 	public String emailAuthCallBack(@RequestParam("email")String email, @RequestParam("emailAuthCode")String emailAuthCode, Model model) {
-		System.out.println("email : " + email);
-		System.out.println("emailAuthCode : " + emailAuthCode);
+
 
 		if(memberService.findByEmail(email).getEmailAuthCode().equals(emailAuthCode)) {
-			System.out.println("인증 코드가 일치함. 상태 바꿔드림");
 			memberService.changeEmailAuth(email);
 			model.addAttribute("loginForm", new LoginForm());
 			model.addAttribute("state", "emailChecked");
 	        return "login/loginForm";
 		}
+		
 		return "redirect:/join";
 		
 	}

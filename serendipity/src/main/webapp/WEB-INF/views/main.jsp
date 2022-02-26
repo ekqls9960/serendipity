@@ -23,8 +23,19 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+
         
         
+        <style>
+        
+        
+	 input:hover {
+
+		  outline : 6px solid rgba(255,200,0,0.9);
+		
+
+	 }
+        </style>
         
         
     </head>
@@ -80,9 +91,47 @@
                     <h2 class="section-heading text-uppercase">Poetry</h2>
                     <h3 class="section-subheading text-muted">세렌디피티 회원의 주제별 시를 감상하세요.</h3>
                 </div>
+                
+                
+                
+                
+                
+                        <div class="row">
+                    
+                       
+                        <c:forEach var="theme" items="${list }">
+                       
+	                        <div class="col-lg-4 col-sm-6 mb-4">
+		                        <div class="portfolio-item">
+		                        	<form:form class="form-horizontal" modelAttribute="theme" role="form" method="get" action="${pageContext.request.contextPath}/poem/themecontent">
+			                       
+			                            <a class="portfolio-link" >
+			                            	<input class="img-fluid portfolio-hover-content" type="image" src="assets/img/portfolio/${theme.id }.jpg"
+			                            	>
+			     
+			                            
+			                           
+			                            </a>
+			                            <div class="portfolio-caption">
+			                                <div class="portfolio-caption-heading">${theme.themename }</div>
+			                                <div class="portfolio-caption-subheading text-muted">#${theme.id }</div>
+			                            </div>
+		                            <form:input type="hidden" path="id" value="${theme.id }" />
+		                      
+		                            </form:form>
+		                        </div>
+	                 	  </div>
+                        </c:forEach>
+                        
+                  
+                </div>
+                
+           
+                
+                <!-- 
                 <div class="row">
                     
-                        <!-- Portfolio item-->
+                       
                         <c:forEach var="theme" items="${list }">
                        
 	                        <div class="col-lg-4 col-sm-6 mb-4">
@@ -107,7 +156,7 @@
                         </c:forEach>
                         
                   
-                </div>
+                </div>-->
             </div>
         </section>
         <!-- About-->

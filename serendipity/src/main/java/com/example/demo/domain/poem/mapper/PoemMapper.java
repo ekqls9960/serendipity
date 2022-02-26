@@ -37,4 +37,12 @@ public interface PoemMapper {
 	
 	@Update("update Poem set hit = hit + 1 where id=#{id} ")
 	void updateHit(Long id);
+	
+	
+	@Update("update Poem set commentcount = commentcount + 1 where id=#{id} ")
+	void updateCommentcount(Long id);
+	
+	@Update("update Poem set commentcount = commentcount -1 where id=#{id} ")
+	void updateCommentcountMinus(Long id);
+	
 }

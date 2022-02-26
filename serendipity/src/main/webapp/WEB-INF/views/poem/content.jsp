@@ -34,9 +34,16 @@
          
          .center{
 
+			  display: flex;
+			  position: absolute;
+			  align-items: center;
          }
          
 
+	hr{
+	border:solid RGB(255,200,0); 
+	align:center;
+	width:50%; }
          
 
          </style>
@@ -58,26 +65,108 @@
                 <div class="row text-center">
                 	<div class="col-md-2"></div>
                     <div class="col-md-8">
-                    
+           
+           			<!-- 작성자에게만 수정/삭제 버튼이 뜨도록. -->
+                  	<c:if test="${member.id == poem.memberId }">    
+                  		         
                        <input type="button" class="btn btn-light btn-sm" value="수정" onclick="window.location.href='${pageContext.request.contextPath}/poem/edit'">&nbsp;&nbsp;
                        <input type="button" class="btn btn-light btn-sm" value="삭제"  onclick="window.location.href='${pageContext.request.contextPath}/poem/delete'">
+                   </c:if>
+           
                     <!--  
                         <h4 class="my-3">내 게시물</h4><p class="text-muted">등록한 시 목록입니다.</p>
                     <br>-->
                     <div>
 	                  
-	                  ===================================<br><br><br>
+	                 <br><br><br>
 	                <div class="summernote" id="content">
 						${poem.content}
 						<!--  ${item.content}-->
 					</div> 
-	                  ===================================<br><br><br>
+	                  <br><br><br>
                    </div>
                     
                   </div>
 					<div class="col-md-2"></div>
                    <br><br><br><br><br><br>
               <br><br><br><br><br><br>
+              
+              	<hr>
+                	
+              
+              
+                <section class="page-section" id="response">
+          
+                <div class="text-center">
+                    <h2>댓글</h2> 
+                      <h3 class="section-subheading text-muted"><strong>댓글을 자유롭게 달아주세요 :) </strong></h3><br><br>
+	              
+        
+                </div>
+              	  <div class="row text-center ">
+               <div class="col-md-2"></div>
+                	<div class="col-md-8 text-center " id ="responseList">
+   
+                		<c:forEach var="response" items="${responseList }"> 
+			                    	<table class="table table-hover">
+				                    	<tr>
+				                  
+				                    		<td width="20%" style="text-align:center"><strong>${response.memberNickname}</strong>  &nbsp;&nbsp; </td>
+				                    		<td width="50%" style="text-align:left"> ${response.content }   &nbsp;&nbsp; </td>
+				                    		<td width="20%" style="text-align:right"> ${response.regDate}   &nbsp;&nbsp; </td>
+				                    		<!-- 댓글 작성자에게만 삭제 버튼이 뜨도록. -->
+              						    	<td><c:if test="${member.id == response.memberId }">    
+              						    	   <form:form class="form-horizontal text-center" modelAttribute="response" role="form" method="get" action="${pageContext.request.contextPath}/response/delete">
+              						    			<input type="submit" class="btn btn-light btn-sm" value="삭제">
+              						    			<form:hidden path="id" value="${response.id }"/>
+              						    		 	<form:hidden path="poemId" value="${poem.id }"/>
+              						    		</form:form>
+											</c:if></td>
+				                    	</tr>
+				                    	
+				               		</table>
+                		</c:forEach>
+                		
+                	
+                    <div class="col-md-10  center">
+                  	<form:form class="form-horizontal text-center" modelAttribute="response" role="form" method="post" action="${pageContext.request.contextPath}/response/add">
+                  	
+                  		<form:input size="60" path="content"   required="required"/>
+                  		<form:hidden path="memberId" value="${member.id }"/>
+                  		<form:hidden path="memberNickname" value="${member.nickname }"/>
+                  		<form:hidden path="poemTitle" value="${poem.title }"/>
+                  		<form:hidden path="poemId" value="${poem.id }"/>&nbsp;&nbsp;
+                       <input type="submit" class="btn btn-primary btn-md" value="댓글 등록">&nbsp;&nbsp;
+                     
+                     </form:form>
+                     
+                     </div>
+                	
+                	</div>
+                	
+                	
+   
+                    <div>
+	                  <br><br>
+	              
+                   </div>
+                    
+                  
+					<div class="col-md-2"></div>
+                   <br><br><br><br><br><br>
+              <br><br><br><br><br><br>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
             	  <div class="text-center">
                     <div >
                          &nbsp;&nbsp;
