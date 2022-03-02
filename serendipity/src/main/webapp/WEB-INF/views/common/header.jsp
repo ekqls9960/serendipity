@@ -49,7 +49,7 @@
                         </c:if>                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/#poetry">Poetry</a></li>
                         
                         <c:if test="${member == null }">
-                     	   <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                     	   <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/#about">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
 						</c:if>
 						<c:if test="${member != null }">
