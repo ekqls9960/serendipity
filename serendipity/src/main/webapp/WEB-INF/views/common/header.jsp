@@ -46,7 +46,7 @@
                         <c:if test="${member != null }">
                             <li class="nav-item"><a class="nav-link">${member.nickname }님~</a></li>
                  
-                        </c:if>                        <li class="nav-item"><a class="nav-link" href="#portfolio">Poetry</a></li>
+                        </c:if>                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/#poetry">Poetry</a></li>
                         
                         <c:if test="${member == null }">
                      	   <li class="nav-item"><a class="nav-link" href="#about">About</a></li>

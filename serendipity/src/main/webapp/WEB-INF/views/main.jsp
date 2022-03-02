@@ -53,7 +53,7 @@
                         <c:if test="${member != null }">
                             <li class="nav-item"><a class="nav-link">${member.nickname }님 </a></li>
                  
-                        </c:if>                        <li class="nav-item"><a class="nav-link" href="#portfolio">Poetry</a></li>
+                        </c:if>                        <li class="nav-item"><a class="nav-link" href="#poetry">Poetry</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <c:if test="${member == null }">
                             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a></li>
@@ -85,7 +85,7 @@
         <!-- 마이페이지로 수정-->
 
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
+        <section class="page-section bg-light" id="poetry">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Poetry</h2>
