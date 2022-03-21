@@ -130,7 +130,10 @@ public class PoemController {
 		poem.setMemberNickname(form.getMemberNickname());
 		poem.setThemeId(themeId);
 		poem.setTitle(form.getTitle());
-		poem.setContent(form.getContent());
+		poem.setContent(form.getContent() );
+		
+		
+		
 		poemService.save(poem);
 		
 		return "member/mypage";
