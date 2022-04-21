@@ -27,7 +27,9 @@ public class MailService {
            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
            mimeMessageHelper.setTo(email); // 메일 수신자
            mimeMessageHelper.setSubject("[세렌디피티] 이메일 인증을 완료해주세요"); // 메일 제목
-           mimeMessageHelper.setText("<html><head></head><body><div id=\"container\"><a href=\"http://localhost:8080/member/emailAuthCallBack?email="+email+"&emailAuthCode="+authCode+"\">링크를 누르면 이메일 인증이 완료됩니다</a></div></body></html>", true); // 메일 본문 내용, HTML 여부
+           mimeMessageHelper.setText("<html><head></head><body><div id=\"container\"><a "
+           		+ "href=\"http://localhost:8080/member/emailAuthCallBack?email="+email+"&emailAuthCode="
+        		+authCode+"\">링크를 누르면 이메일 인증이 완료됩니다</a></div></body></html>", true); // 메일 본문 내용, HTML 여부
            javaMailSender.send(mimeMessage);
            log.info("Success!!");
        } catch (MessagingException e) {

@@ -57,9 +57,8 @@ public class PoemController {
 		Member member = (Member)session.getAttribute("member");
 
 		if(member.getId() != poem.getMemberId()) {
-			//조회수 1 올리기? 아 본인꺼는 올리지 말자.
+			//타인이 조회하면 조회수1 올리기. 본인 아이디로는 변동X
 			poemService.hitPlus(poem.getId());
-			System.out.println("***----조회수 1 올라감!!----");
 		}
 		model.addAttribute("poem", poem);
 		model.addAttribute("response", new Response());
@@ -106,7 +105,7 @@ public class PoemController {
 		
 	}
 	
-	
+	//작성하기 눌렀을 때
 	@GetMapping("/write")
 	public String writeForm(Model model) {
 		PoemWriteForm form = new PoemWriteForm();
@@ -118,6 +117,7 @@ public class PoemController {
 		return "poem/writeForm";
 		}
 	
+	//작성완료
 	@PostMapping("/write")
 	public String write(@Validated @ModelAttribute("poemWriteForm") PoemWriteForm form, 
 			BindingResult bindingResult, Model model, HttpSession session) {
@@ -131,8 +131,6 @@ public class PoemController {
 		poem.setThemeId(themeId);
 		poem.setTitle(form.getTitle());
 		poem.setContent(form.getContent() );
-		
-		
 		
 		poemService.save(poem);
 		

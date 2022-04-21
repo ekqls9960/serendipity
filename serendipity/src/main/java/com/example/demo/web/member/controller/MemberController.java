@@ -151,7 +151,7 @@ public class MemberController {
 		String emailAuthCode = RandomStringUtils.randomAlphanumeric(8);
 		
 
-		//db에 멤버정보 저장
+		//멤버객체 생성 및 정보 저장
 		Member member = new Member();
 		member.setEmail(form.getEmail());
 		member.setEmailAuthCode(emailAuthCode);
@@ -174,7 +174,8 @@ public class MemberController {
 	
 	
 	@GetMapping("/emailAuthCallBack")
-	public String emailAuthCallBack(@RequestParam("email")String email, @RequestParam("emailAuthCode")String emailAuthCode, Model model) {
+	public String emailAuthCallBack(@RequestParam("email")String email, 
+			@RequestParam("emailAuthCode")String emailAuthCode, Model model) {
 
 
 		if(memberService.findByEmail(email).getEmailAuthCode().equals(emailAuthCode)) {

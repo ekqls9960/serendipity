@@ -33,12 +33,9 @@ public class ResponseController {
 	@Autowired
 	PoemService poemService;
 	
-	
-
 	@PostMapping("/add")
 	public String responseAdd(@Validated @ModelAttribute("response")Response response, 
 			BindingResult bindingResult, Model model, HttpSession session) {
-		
 		
 		if(bindingResult.hasErrors()){
             log.info("errors={}", bindingResult);
@@ -56,8 +53,6 @@ public class ResponseController {
 		responseService.add(res);
 		//해당 시의 comment 개수 업뎃
 		poemService.commentCountPlus(response.getPoemId());
-		
-		
 		
 		return "redirect:/poem/content" + "?id=" + response.getPoemId();
 		}
